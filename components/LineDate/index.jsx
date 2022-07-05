@@ -2,31 +2,30 @@ import React from 'react'
 
 import Input from '../Input'
 import styled from 'styled-components'
-import ComboBox from '../ComboBox'
 
-export const LineDate = ({ title, type, placeholder, ...props }) => {
+const LineDate = ({ 
+  title,
+  type,
+  placeholder,
+  name,
+  value,
+  ...props }) => {
   return (
     <Content>
       <Title>{ title }</Title>
       <Input
         Types={type}
         Placeholder={placeholder}
+        name={name}
+        maxLength={10}
+        Value={value}
         {...props}
       />
     </Content>
   )
 }
 
-export const LineComboBox = ({ title }) => {
-  return (
-    <Content>
-      <Title>{title}</Title>
-      <ComboBox
-
-      />
-    </Content>
-  )
-}
+export default LineDate
 
 const Content = styled.div`
   display: flex;

@@ -2,7 +2,14 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-const Input = ({ Types, Name, Disabled = false, Placeholder, Value, ...props }) => {
+const Input = ({ 
+  Types, 
+  Name, 
+  Disabled = false, 
+  Placeholder, 
+  Value,
+  handleInput,
+  ...props }) => {
   return (
     <>
       <InputComponent 
