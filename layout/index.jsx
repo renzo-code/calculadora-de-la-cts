@@ -60,4 +60,7 @@ const LayoutBody = styled.div`
   padding: 0;
   min-height: calc(100vh - 450px);
   font-family: Arial, Helvetica, sans-serif;
+  @media (max-width: 500px){
+    width: 90%;
+  }
 `

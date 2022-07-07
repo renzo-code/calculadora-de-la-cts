@@ -184,6 +184,7 @@ const Home = () => {
       <CaracterSpecial>
         SUELDO + ASIGNACIÓN FAMILIAR (si es que la tuviese) + BONO (9% DE ESSALUD; 6.75%EPS)
       </CaracterSpecial>
+        <br></br>
       <ContainerTitle>
         <Title>
           CALCULADORA DE GRATIFICACIÓN
@@ -301,23 +302,41 @@ const TitlePrincipal = styled.h1`
   text-align: center;
   margin: 30px 0;
   letter-spacing: -.5px;
+  @media (max-width: 500px){
+    font-size: 25px;
+  }
 `
 const PBajadas = styled.p`
   font-size: 17px;
   width: 90%;
   margin: 20px auto;
   line-height: 20px;
-  /* font-family: "Merriweather", serif; */
+
+  @media (max-width: 500px){
+    font-size: 16px;
+    width: 100%;
+  }
 `
 const SubTitles = styled.h2`
   font-size: 22px;
   width: 90%;
   margin: 30px auto 0;
+
+  @media (max-width: 500px){
+    font-size: 19px;
+    width: 100%;
+  }
 `
 const CaracterSpecial = styled.h3`
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   font-style: oblique;
   font-size: 18px;
   font-weight: 600;
+
+  @media (max-width: 500px){
+    font-size: 17px;
+    width: 100%;
+    line-height: 18px;
+  }
 `
