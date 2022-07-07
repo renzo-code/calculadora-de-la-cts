@@ -17,6 +17,7 @@ const Home = () => {
   const [resultCBonoFam , setResultCBonoFam] = useState(0)
   const [bono, setBono] = useState(null)
   const [fam, setFam] = useState(null)
+  const [remFam, setRemFam] = useState(1025*0.10)
 
   const optionsBono = [
     {
@@ -39,6 +40,11 @@ const Home = () => {
       description : "No"
     }
   ]
+
+  let example = moment().day(1)
+  console.log("example", example._d)
+  // const RemFam = 1025*0.10
+  const day1 = moment()
 
   const handleInput = (e) => {
     const { value, validity: { valid } } = e.target;
@@ -70,6 +76,8 @@ const Home = () => {
   useEffect (() => {
     setDiffMeses(moment().diff(fecha, "month"))
     console.log('diffMeses', diffMeses)
+    // if(example){
+    // }
     if(diffMeses <= 6){
       let bonoEx = 0
       let conFam = 0
@@ -85,22 +93,97 @@ const Home = () => {
       setResultCBono(resultSB + bonoEx)
 
       if(fam === "1"){
-        conFam = resultCBono + 102.5
-      }else{
-        conFam = resultCBono
+        conFam = resultCBono + remFam
+        // setResultCBonoFam(conFam)
       }
-        setResultCBonoFam(conFam)
+      if(fam === "2"){
+        setResultCBonoFam(resultCBono)
+        // conFam = resultCBono
+      }
+      setResultCBonoFam(conFam)
       
     }
-  }, [fecha, sueldo, diffMeses, bono, resultSB, resultCBono, fam])
+  }, [fecha, sueldo, diffMeses, bono, resultSB, resultCBono, fam, remFam])
   
-  console.log('resultSB', resultSB)
-  console.log('sueldo', sueldo)
-  console.log('bono', bono)
-  console.log('fam', fam)
+  // console.log('resultSB', resultSB)
+  // console.log('sueldo', sueldo)
+  // console.log('bono', bono)
+  // console.log('fam', fam)
+  console.log('diffMeses', diffMeses)
 
   return (
     <Layout>
+      <TitlePrincipal>
+        Gratificación de julio 2022: quienes serán beneficiarios, cuánto es, 
+        cuándo pagan y todo lo que debes saber
+      </TitlePrincipal>
+      <PBajadas>
+        El 15 de julio es la fecha límite para que las empresas privadas abonen 
+        a sus empleados la gratificación correspondiente a las Fiestas Patrias. 
+        Este derecho responde a la Ley N°27735, y se aplica también en Navidad. 
+        Calcula aquí a cuánto asciende tu pago.
+      </PBajadas>
+      <SubTitles>
+        ¿Qué es la gratificación?
+      </SubTitles>
+      <PBajadas>
+        La gratificación es una remuneración adicional que percibe el trabajador, 
+        cuyo monto dependerá de los días computables que laboró en una misma compañía. 
+        Para la ocasión de julio se contabiliza los días entre el 1 de enero y el 30 de junio.
+        <br></br><br></br>
+        Se paga de forma bruta, es decir, no está afectada por los descuentos de ley que sí se 
+        aplican al salario mensual (tales como pago al sistema de pensiones o seguros); por el contrario, 
+        la gratificación goza de un adicional del 9% por concepto de EsSalud o 6.75% de EPS.
+        <br></br><br></br>
+        Solo estará afectada por el descuento de quinta categoría si es que el trabajador durante 
+        el año supera las 7 UIT en ingresos, conforme a lo establecido en el artículo 34 de la Ley del 
+        impuesto a la renta.
+        <br></br><br></br>
+        Es un monto equivalente al último salario mensual que percibió el trabajador. Se paga de forma bruta, 
+        es decir, no está afectada por los descuentos de ley que sí se aplican a la remuneración 
+        (tales como pago al sistema de pensiones o seguros); por el contrario, goza de un adicional del 9% 
+        por concepto de EsSalud o 6.75% de EPS.
+        <br></br><br></br>
+        Solo estará afecta al descuento de quinta categoría si es que el trabajador durante el año supera las 
+        7 UIT en ingresos, conforme a lo establecido en el artículo 34 de la Ley del impuesto a la renta.
+      </PBajadas>
+      <SubTitles>
+        ¿Quiénes reciben este beneficio?
+      </SubTitles>
+      <PBajadas>
+        Tal como señala el artículo 1 de la Ley 27735 (denominada “Ley que regula el otorgamiento de las gratificaciones 
+        para los trabajadores del régimen de la actividad privada por Fiestas Patrias y Navidad”), tienen derecho todos 
+        aquellos trabajadores que están sujetos al régimen de la actividad privada, sea cual fuere la modalidad del 
+        contrato de trabajo y el tiempo de prestación de servicios del trabajador.
+        <br></br><br></br>
+        Sin embargo, hay detalles a tener en cuenta. En el caso de las pequeñas empresas, y de acuerdo al Decreto Supremo 
+        013-2013-PRODUCE, los empleados tendrán derecho a media gratificación en julio y media gratificación en diciembre.
+        <br></br><br></br>
+        Por otro lado, la Ley 31110 permite que los trabajadores del régimen agrario también accedan a este beneficio. 
+        Según el artículo 3 numeral d, el trabajador puede elegir recibir los conceptos de CTS y gratificaciones en los 
+        plazos que la ley establece, sin que entren a ser prorrateados en la remuneración diaria.
+        <br></br><br></br>
+        Finalmente, la Ley 31047 otorga el beneficio a los trabajadores del hogar, cuya gratificación será equivalente al 
+        sueldo que se recibe.
+      </PBajadas>
+      <SubTitles>
+        ¿Cuál es la diferencia entre gratificación y aguinaldo?
+      </SubTitles>
+      <PBajadas>
+        La gratificación corresponde únicamente al sector privado y se calcula en base a lo percibido como salario en el 
+        último mes. Mientras, el aguinaldo es un pago de s/ 300 que se hace a los trabajadores del sector público dos veces 
+        al año.
+      </PBajadas>
+      <SubTitles>
+        ¿Cómo calcular la gratificación?
+      </SubTitles>
+      <PBajadas>
+        El cálculo del monto final se debe hacer usando los siguientes criterios:
+        <br></br>
+      </PBajadas>
+      <CaracterSpecial>
+        SUELDO + ASIGNACIÓN FAMILIAR (si es que la tuviese) + BONO (9% DE ESSALUD; 6.75%EPS)
+      </CaracterSpecial>
       <ContainerTitle>
         <Title>
           CALCULADORA DE GRATIFICACIÓN
@@ -144,7 +227,7 @@ const Home = () => {
           type="number"
           title="Total a recibir"
           disabled="true"
-          value={resultCBonoFam?.toFixed(2)}
+          value={resultCBonoFam > 0 ? resultCBonoFam?.toFixed(2) : resultCBono?.toFixed(2)}
         />
         <Footer/>
       </ContainerBody>
@@ -159,13 +242,13 @@ const ContainerTitle = styled.div`
   background-color: red;
   height: 50px;
   line-height: 50px;
-  margin: 0 auto 20px;
+  margin: 50px auto 20px;
 
   @media (max-width: 520px){
     margin: 0 auto 15px;
   }
 `
-const Title = styled.h1`
+const Title = styled.h3`
   font-family: Roboto-Bold;
   font-size: 25px;
   text-align: center;
@@ -212,4 +295,29 @@ const Footer = styled.div`
     background-size: 120px;
     margin-top: 20px;
   }
+`
+const TitlePrincipal = styled.h1`
+  font-size: 30px;
+  text-align: center;
+  margin: 30px 0;
+  letter-spacing: -.5px;
+`
+const PBajadas = styled.p`
+  font-size: 17px;
+  width: 90%;
+  margin: 20px auto;
+  line-height: 20px;
+  /* font-family: "Merriweather", serif; */
+`
+const SubTitles = styled.h2`
+  font-size: 22px;
+  width: 90%;
+  margin: 30px auto 0;
+`
+const CaracterSpecial = styled.h3`
+  width: 90%;
+  margin: 0 auto;
+  font-style: oblique;
+  font-size: 18px;
+  font-weight: 600;
 `

@@ -2,6 +2,8 @@ import React from 'react'
 
 import NextHead from 'next/head'
 import styled from 'styled-components'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 
 const Layout = (props) => {
@@ -22,14 +24,17 @@ const Layout = (props) => {
         <meta property="fb:pages" content="94604237016" />
         <meta property="fb:app_id" content="489210501129201" />
         <meta property="og:image" content="https://origin.cronosmedia.glr.pe/large/2021/10/14/lg_6168aa194dbe4a0ab457331d.jpg"/>
-        <title>Calculadora gratificación: qué es, cuándo se paga y cómo calcular gratificación</title>
+        <title>Gratificación de julio 2022: quienes serán beneficiarios, cuánto es, 
+        cuándo pagan y todo lo que debes saber</title>
       </NextHead>
       <Wrapper>
+        <Header/>
         <LayoutContent>
           <LayoutBody>
             { children }
           </LayoutBody>
         </LayoutContent>
+        <Footer/>
       </Wrapper>
     </>
   )
