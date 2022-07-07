@@ -41,15 +41,8 @@ const Home = () => {
     }
   ]
 
-  let example = moment().day(1)
-  console.log("example", example._d)
-  // const RemFam = 1025*0.10
-  const day1 = moment()
-
   const handleInput = (e) => {
     const { value, validity: { valid } } = e.target;
-    console.log('valid: ', valid);
-    console.log('value: ', value);
     setSueldo(valid ? value : sueldo)
   }
 
@@ -74,10 +67,7 @@ const Home = () => {
   }
 
   useEffect (() => {
-    setDiffMeses(moment().diff(fecha, "month"))
-    console.log('diffMeses', diffMeses)
-    // if(example){
-    // }
+    setDiffMeses(moment("2022-07-01").diff(fecha, "month"))
     if(diffMeses <= 6){
       let bonoEx = 0
       let conFam = 0
@@ -94,22 +84,14 @@ const Home = () => {
 
       if(fam === "1"){
         conFam = resultCBono + remFam
-        // setResultCBonoFam(conFam)
       }
       if(fam === "2"){
         setResultCBonoFam(resultCBono)
-        // conFam = resultCBono
       }
       setResultCBonoFam(conFam)
       
     }
   }, [fecha, sueldo, diffMeses, bono, resultSB, resultCBono, fam, remFam])
-  
-  // console.log('resultSB', resultSB)
-  // console.log('sueldo', sueldo)
-  // console.log('bono', bono)
-  // console.log('fam', fam)
-  console.log('diffMeses', diffMeses)
 
   return (
     <Layout>
