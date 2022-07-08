@@ -100,10 +100,9 @@ const Home = () => {
         cuándo pagan y todo lo que debes saber
       </TitlePrincipal>
       <PBajadas>
-        El 15 de julio es la fecha límite para que las empresas privadas abonen 
-        a sus empleados la gratificación correspondiente a las Fiestas Patrias. 
-        Este derecho responde a la Ley N°27735, y se aplica también en Navidad. 
-        Calcula aquí a cuánto asciende tu pago.
+        El 15 de julio es la fecha límite para que las empresas privadas abonen a sus empleados la 
+        gratificación correspondiente a las Fiestas Patrias. Este derecho responde a la Ley N°27735, 
+        y se aplica también en Navidad. Calcula aquí a cuánto asciende tu pago.
       </PBajadas>
       <SubTitles>
         ¿Qué es la gratificación?
@@ -126,8 +125,8 @@ const Home = () => {
         (tales como pago al sistema de pensiones o seguros); por el contrario, goza de un adicional del 9% 
         por concepto de EsSalud o 6.75% de EPS.
         <br></br><br></br>
-        Solo estará afecta al descuento de quinta categoría si es que el trabajador durante el año supera las 
-        7 UIT en ingresos, conforme a lo establecido en el artículo 34 de la Ley del impuesto a la renta.
+        Solo estará afectada por el descuento de quinta categoría si es que el trabajador durante el año supera 
+        las 7 UIT en ingresos, conforme a lo establecido en el artículo 34 de la Ley del impuesto a la renta.
       </PBajadas>
       <SubTitles>
         ¿Quiénes reciben este beneficio?

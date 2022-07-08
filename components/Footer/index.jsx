@@ -5,10 +5,6 @@ import styled from 'styled-components'
 const Footer = () => {
   return(
     <Content>
-      {/* <Wrapper>
-        <Tip>Fecha de última modificación:</Tip><Text> 06 de Junio de 2022</Text>
-      </Wrapper>
-      <br></br> */}
       <Wrapper>
         <Tip>Texto:</Tip><Text>Carlos Estacio Olivares y</Text>
       </Wrapper>
@@ -17,7 +13,7 @@ const Footer = () => {
       <Wrapper>
         <Tip>Desarrollo Web:</Tip><Text>Renzo Neira</Text>
       </Wrapper>
-      <br></br><br></br>
+      <br></br>
       <Text>© Grupo La República</Text>
       <Text>Todos los derechos reservados.</Text>
       <br></br><br></br>  

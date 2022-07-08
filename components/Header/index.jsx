@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import SocialBar from '../SocialBar'
 
 const Header = () => {
   return(
@@ -8,6 +9,7 @@ const Header = () => {
       <WrapperImg>
         <Logo src='./images/LRespeciales.png'/>
       </WrapperImg>
+      <SocialBar/>
     </Content>
   )
 }
@@ -27,7 +29,7 @@ const Content = styled.div`
 `
 const WrapperImg = styled.div`
   height: auto;
-  width: 255px;
+  width: 210px;
   margin-left: 20px;
 
   @media (max-width: 470px){
