@@ -9,7 +9,7 @@ const SocialBar = () => {
     <>
       <div className='social'>
         <div className='wrapperF'>
-          <FacebookShareButton url='https://especiales.larepublica.pe/economia/peru/gratificacion-de-julio-2022-quienes-seran-beneficiarios-cuanto-es-cuando-pagan-y-todo-lo-que-debes-saber' 
+          <FacebookShareButton url='https://especiales.larepublica.pe/gratificacion-de-2022-peru-quienes-seran-beneficiarios-cuanto-es-cuando-pagan-y-todo-lo-que-debes-saber' 
             quote="Calculadora de las gratificaciones 2022 | LR Especiales"
           >
             <ContentIconF>
@@ -19,7 +19,7 @@ const SocialBar = () => {
         </div>
 
         <div>
-          <TwitterShareButton url='https://especiales.larepublica.pe/economia/peru/gratificacion-de-julio-2022-quienes-seran-beneficiarios-cuanto-es-cuando-pagan-y-todo-lo-que-debes-saber' 
+          <TwitterShareButton url='https://especiales.larepublica.pe/gratificacion-de-2022-peru-quienes-seran-beneficiarios-cuanto-es-cuando-pagan-y-todo-lo-que-debes-saber' 
             title="Calculadora de las gratificaciones 2022 | LR Especiales"
           >
             <ContentIconT>
@@ -29,7 +29,7 @@ const SocialBar = () => {
         </div>
 
         <div>
-          <WhatsappShareButton url='https://especiales.larepublica.pe/economia/peru/gratificacion-de-julio-2022-quienes-seran-beneficiarios-cuanto-es-cuando-pagan-y-todo-lo-que-debes-saber' 
+          <WhatsappShareButton url='https://especiales.larepublica.pe/gratificacion-de-2022-peru-quienes-seran-beneficiarios-cuanto-es-cuando-pagan-y-todo-lo-que-debes-saber' 
             title="Calculadora de las gratificaciones 2022 | LR Especiales"
           >
             <ContentIconW>

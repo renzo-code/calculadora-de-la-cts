@@ -20,9 +20,9 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   width: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   height: 80px;
   background-color: #EEEEEE;
   border-bottom: red solid 5px;

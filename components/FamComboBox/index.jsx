@@ -35,11 +35,11 @@ const Content = styled.div`
   height: auto;
   padding: 0 40px;
   margin: 5px 0;
-
+  
   @media (max-width: 560px){
     padding: 0;
   }
-`
+  `
 const Title = styled.h1`
   font-size: 17px;
   text-align: left;
@@ -49,7 +49,7 @@ const Title = styled.h1`
     font-size: 15px;
     line-height: 18px;
   }
-`
+  `
 const Select = styled.select`
   min-height: 35px;
   width: 40%;

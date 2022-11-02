@@ -35,4 +35,5 @@ const InputComponent = styled.input`
   border: 2px solid #759C9F;
   min-height: 35px;
   min-width: 175px;
+  background-color: white;
 `

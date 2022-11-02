@@ -5,35 +5,24 @@ import styled from 'styled-components'
 import moment from 'moment'
 
 import LineDate from '../components/LineDate'
-import BonoComboBox from '../components/BonoComboBox'
 import FamComboBox from '../components/FamComboBox'
 
 const Home = () => {
   const [fecha, setFecha] = useState(null)
   const [sueldo, setSueldo] = useState(null)
   const [diffMeses, setDiffMeses] = useState(null)
+  const [valueBonoFam, setValueBonoFam] = useState(102.5)
   const [resultSB , setResultSB] = useState(null)
-  const [resultCBono , setResultCBono] = useState(0)
-  const [resultCBonoFam , setResultCBonoFam] = useState(0)
   const [bono, setBono] = useState(null)
   const [fam, setFam] = useState(null)
-  const [remFam, setRemFam] = useState(1025*0.10)
-
-  const optionsBono = [
-    {
-      id : 1,
-      description : "ESSALUD 9%"
-    },
-    {
-      id: 2,
-      description : "EPS 6,75%"
-    }
-  ]
+  const [remuComputable, setRemuComputable] = useState(null)
+  const [diffGrati, setDiffGrati] = useState(null)
+  const [ctsFinally, setCtsFinally] = useState(null)
   
   const optionsFam = [
     {
       id : 1,
-      description : "Si"
+      description : "Sí"
     },
     {
       id: 2,
@@ -46,16 +35,6 @@ const Home = () => {
     setSueldo(valid ? value : sueldo)
   }
 
-  // const handleInput = (e, fn, state) => {
-  //   const { value, validity: { valid }, type } = e.target;
-  //   const validated = (valid || type === 'date') ? value : state;
-  //   fn(validated);
-  // };
-
-  const handleComboBono = (e) => {
-    let  value = e.target.value
-    setBono(value)
-  }
   const handleComboFam = (e) => {
     let  value = e.target.value
     setFam(value)
@@ -67,46 +46,112 @@ const Home = () => {
   }
 
   useEffect (() => {
-    setDiffMeses(moment("2022-07-01").diff(fecha, "month"))
-    if(diffMeses <= 6){
-      let bonoEx = 0
-      let conFam = 0
-      let result = sueldo / 6 * diffMeses
-      setResultSB(result)
+    setDiffMeses(moment("2022-11-01").diff(fecha, "month"))
 
-      if(bono === "1"){
-        bonoEx = resultSB * 0.09
-      } 
-      if(bono === "2") {
-        bonoEx = resultSB * 0.0675
-      }
-      setResultCBono(resultSB + bonoEx)
+    if(diffMeses <= 6){
+      
+      console.log("diffMeses", diffMeses)
 
       if(fam === "1"){
-        conFam = resultCBono + remFam
+        setDiffGrati(moment("2022-12-01").diff(fecha, "month"))
+        if (diffGrati <= 6) {
+          console.log("diffGrati", diffGrati)
+          setRemuComputable(((parseInt(sueldo) + valueBonoFam) / 6 * diffGrati) / 6)
+          console.log("remuComputable", remuComputable)
+
+          setCtsFinally((parseInt(sueldo) + valueBonoFam + remuComputable) / 12 * diffMeses)
+          console.log("setCtsFinally", ctsFinally)
+        }
+
+        if(diffGrati >= 6){
+          setRemuComputable(((parseInt(sueldo) + valueBonoFam) / 6 * 6) / 6)
+          console.log("remuCompubale2", remuComputable)
+
+          setCtsFinally((parseInt(sueldo) + valueBonoFam + remuComputable) / 12 * 6)
+          console.log("setCtsFinally2", ctsFinally)
+        }
+
       }
+
       if(fam === "2"){
-        setResultCBonoFam(resultCBono)
+        setDiffGrati(moment("2022-12-01").diff(fecha, "month"))
+        if (diffGrati <= 6) {
+          console.log("diffGrati", diffGrati)
+          setRemuComputable((parseInt(sueldo) / 6 * diffGrati) / 6)
+          console.log("remuComputable", remuComputable)
+
+          setCtsFinally((parseInt(sueldo) + remuComputable) / 12 * diffMeses)
+          console.log("setCtsFinally", ctsFinally)
+        }
+        else{
+          setRemuComputable((parseInt(sueldo) / 6 * 6) / 6)
+          console.log("remuCompubale2", remuComputable)
+
+          setCtsFinally((parseInt(sueldo) + remuComputable) / 12 * 6)
+          console.log("setCtsFinally", ctsFinally)
+        }
       }
-      setResultCBonoFam(conFam)
+
       
+    } else{
+
+      if(fam === "1"){
+        setDiffGrati(moment("2022-12-01").diff(fecha, "month"))
+        if (diffGrati <= 6) {
+          console.log("diffGrati", diffGrati)
+          setRemuComputable(((parseInt(sueldo) + valueBonoFam) / 6 * diffGrati) / 6)
+          console.log("remuComputable", remuComputable)
+
+          setCtsFinally((parseInt(sueldo) + valueBonoFam + remuComputable) / 12 * 6)
+          console.log("setCtsFinally", ctsFinally)
+        }
+
+        if(diffGrati >= 6){
+          setRemuComputable(((parseInt(sueldo) + valueBonoFam) / 6 * 6) / 6)
+          console.log("remuCompubale2", remuComputable)
+
+          setCtsFinally((parseInt(sueldo) + valueBonoFam + remuComputable) / 12 * 6)
+          console.log("setCtsFinally2", ctsFinally)
+        }
+
+      }
+
+      if(fam === "2"){
+        setDiffGrati(moment("2022-12-01").diff(fecha, "month"))
+        if (diffGrati <= 6) {
+          console.log("diffGrati", diffGrati)
+          setRemuComputable((parseInt(sueldo) / 6 * diffGrati) / 6)
+          console.log("remuComputable", remuComputable)
+
+          setCtsFinally((parseInt(sueldo) + remuComputable) / 12 * 6)
+          console.log("setCtsFinally", ctsFinally)
+        }
+        else{
+          setRemuComputable((parseInt(sueldo) / 6 * 6) / 6)
+          console.log("remuCompubale2", remuComputable)
+
+          setCtsFinally((parseInt(sueldo) + remuComputable) / 12 * 6)
+          console.log("setCtsFinally", ctsFinally)
+        }
+      }
     }
-  }, [fecha, sueldo, diffMeses, bono, resultSB, resultCBono, fam, remFam])
+  }, [fecha, sueldo, diffMeses, bono, resultSB, fam, diffGrati, valueBonoFam, remuComputable, ctsFinally])
 
   return (
     <Layout>
-      <TitlePrincipal>
-        Gratificación de julio 2022: quienes serán beneficiarios, cuánto es, 
-        cuándo pagan y todo lo que debes saber
-      </TitlePrincipal>
-      <PBajadas>
+      {/* <TitlePrincipal>
+        CALCULADORA DE LA CTS: ¿cómo saber cuánto me corresponde?
+      </TitlePrincipal> */}
+      {/* <PBajadas>
         El 15 de julio es la fecha límite para que las empresas privadas abonen a sus empleados la 
         gratificación correspondiente a las Fiestas Patrias. Este derecho responde a la Ley N°27735, 
         y se aplica también en Navidad. Calcula aquí a cuánto asciende tu pago.
       </PBajadas>
-      <SubTitles>
-        ¿Qué es la gratificación?
-      </SubTitles>
+      <WrapperSubTitle>
+        <SubTitles>
+          ¿Qué es la gratificación?
+        </SubTitles>
+      </WrapperSubTitle>
       <PBajadas>
         La gratificación es una remuneración adicional que percibe el trabajador, 
         cuyo monto dependerá de los días computables que laboró en una misma compañía. 
@@ -118,19 +163,21 @@ const Home = () => {
         <br></br><br></br>
         Solo estará afectada por el descuento de quinta categoría si es que el trabajador durante 
         el año supera las 7 UIT en ingresos, conforme a lo establecido en el artículo 34 de la Ley del 
-        impuesto a la renta.
-        <br></br><br></br>
+        impuesto a la renta. */}
+        {/* <br></br><br></br>
         Es un monto equivalente al último salario mensual que percibió el trabajador. Se paga de forma bruta, 
         es decir, no está afectada por los descuentos de ley que sí se aplican a la remuneración 
         (tales como pago al sistema de pensiones o seguros); por el contrario, goza de un adicional del 9% 
         por concepto de EsSalud o 6.75% de EPS.
         <br></br><br></br>
         Solo estará afectada por el descuento de quinta categoría si es que el trabajador durante el año supera 
-        las 7 UIT en ingresos, conforme a lo establecido en el artículo 34 de la Ley del impuesto a la renta.
-      </PBajadas>
-      <SubTitles>
-        ¿Quiénes reciben este beneficio?
-      </SubTitles>
+        las 7 UIT en ingresos, conforme a lo establecido en el artículo 34 de la Ley del impuesto a la renta. */}
+      {/* </PBajadas>
+      <WrapperSubTitle>
+        <SubTitles>
+          ¿Quiénes reciben este beneficio?
+        </SubTitles>
+      </WrapperSubTitle>
       <PBajadas>
         Tal como señala el artículo 1 de la Ley 27735 (denominada “Ley que regula el otorgamiento de las gratificaciones 
         para los trabajadores del régimen de la actividad privada por Fiestas Patrias y Navidad”), tienen derecho todos 
@@ -147,17 +194,21 @@ const Home = () => {
         Finalmente, la Ley 31047 otorga el beneficio a los trabajadores del hogar, cuya gratificación será equivalente al 
         sueldo que se recibe.
       </PBajadas>
-      <SubTitles>
-        ¿Cuál es la diferencia entre gratificación y aguinaldo?
-      </SubTitles>
+      <WrapperSubTitle>
+        <SubTitles>
+          ¿Cuál es la diferencia entre gratificación y aguinaldo?
+        </SubTitles>
+      </WrapperSubTitle>
       <PBajadas>
         La gratificación corresponde únicamente al sector privado y se calcula en base a lo percibido como salario en el 
         último mes. Mientras, el aguinaldo es un pago de s/ 300 que se hace a los trabajadores del sector público dos veces 
         al año.
       </PBajadas>
-      <SubTitles>
-        ¿Cómo calcular la gratificación?
-      </SubTitles>
+      <WrapperSubTitle>
+        <SubTitles>
+          ¿Cómo calcular la gratificación?
+        </SubTitles>
+      </WrapperSubTitle>
       <PBajadas>
         El cálculo del monto final se debe hacer usando los siguientes criterios:
         <br></br>
@@ -165,10 +216,10 @@ const Home = () => {
       <CaracterSpecial>
         SUELDO + ASIGNACIÓN FAMILIAR (si es que la tuviese) + BONO (9% DE ESSALUD; 6.75%EPS)
       </CaracterSpecial>
-        <br></br>
+        <br></br> */}
       <ContainerTitle>
         <Title>
-          CALCULADORA DE GRATIFICACIÓN
+          CALCULADORA DE LA CTS
         </Title>
       </ContainerTitle>
       <ContainerBody>
@@ -192,12 +243,12 @@ const Home = () => {
           disabled="true"
           value={diffMeses > 6 ? 6 : diffMeses}
         />
-        <BonoComboBox
+        {/* <BonoComboBox
           placeholder="Selecciona uno"
           title="Bono Extraordinario"
           options={optionsBono}
           onChange={(e) => handleComboBono(e)}
-        />
+        /> */}
         <FamComboBox
           options={optionsFam}
           placeholder="Selecciona uno"
@@ -209,10 +260,17 @@ const Home = () => {
           type="number"
           title="Total a recibir"
           disabled="true"
-          value={resultCBonoFam > 0 ? resultCBonoFam?.toFixed(2) : resultCBono?.toFixed(2)}
+          value={ctsFinally > 0 ? ctsFinally?.toFixed(2) : ctsFinally?.toFixed(2)}
         />
         <Footer/>
       </ContainerBody>
+      <MessageWarning>
+        El cálculo realizado es referencial. Los montos podrían variar en función al caso concreto 
+        (por ejemplo para el caso de pequeñas y medianas empresas, en que se recibe un monto menor) 
+        y se calculan en base a la información ingresada por el usuario. Sobre el monto calculado pueden 
+        existir descuentos como el impuesto a la renta, deudas por pensión de alimentos, deudas con el 
+        empleador u otros.
+      </MessageWarning>
     </Layout>
   )
 }
@@ -221,7 +279,7 @@ export default Home
 
 const ContainerTitle = styled.div`
   width: 100%;
-  background-color: red;
+  background-color: #923635;
   height: 50px;
   line-height: 50px;
   margin: 50px auto 20px;
@@ -249,6 +307,10 @@ const Title = styled.h3`
 `
 const ContainerBody = styled.div`
   /* background-color: blue; */
+  background-image: url("./images/dolares.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
   height: 100%;
   width: 100%;
 `
@@ -298,14 +360,38 @@ const PBajadas = styled.p`
     width: 100%;
   }
 `
-const SubTitles = styled.h2`
-  font-size: 22px;
+const WrapperSubTitle = styled.div`
+  height: 30px;
   width: 90%;
-  margin: 30px auto 0;
+  margin: 20px auto 30px;
+  text-align: left;
 
+  @media (max-width: 680px){
+    height: auto;
+  }
   @media (max-width: 500px){
-    font-size: 19px;
-    width: 100%;
+    margin: 0;
+    height: 100%;
+  }
+`
+const SubTitles = styled.h2`
+  background-color: #923635;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: max-content;
+  font-size: 22px;
+  line-height: 30px;
+  color: white;
+  text-align: left;
+  padding: 5px 20px 5px 1px;
+  /* margin: 30px auto 0; */
+  
+  @media (max-width: 680px){
+    width: inherit;
+  }
+  @media (max-width: 500px){
+    height: 100%;
+    font-size: 18px;
   }
 `
 const CaracterSpecial = styled.h3`
@@ -314,10 +400,21 @@ const CaracterSpecial = styled.h3`
   font-style: oblique;
   font-size: 18px;
   font-weight: 600;
+  font-family: "Merriweather", serif;
 
   @media (max-width: 500px){
     font-size: 17px;
     width: 100%;
     line-height: 18px;
   }
+`
+const MessageWarning = styled.h3`
+  font-size: 14px;
+  font-style: oblique;
+  width: 95%;
+  line-height: 16px;
+  color: #4D4D4D;
+  margin: 20px auto 0;
+  font-weight: 100;
+
 `

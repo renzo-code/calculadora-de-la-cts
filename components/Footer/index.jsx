@@ -9,7 +9,9 @@ const Footer = () => {
         <Tip>Texto:</Tip><Text>Carlos Estacio Olivares y</Text>
       </Wrapper>
         <Text>Milagros Requena Calderón</Text>
-      <br></br>
+      <Wrapper>
+        <Tip>Diseño:</Tip><Text>Fabrizio Oviedo</Text>
+      </Wrapper>
       <Wrapper>
         <Tip>Desarrollo Web:</Tip><Text>Renzo Neira</Text>
       </Wrapper>
@@ -38,7 +40,7 @@ const Tip = styled.h2`
 `
 const Text = styled.h2`
   text-align: center;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 100;
   padding-left: 5px;
 `
